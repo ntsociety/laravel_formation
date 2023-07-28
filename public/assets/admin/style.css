@@ -1,0 +1,31 @@
+:root{
+    --offcanvas-width: 270px; 
+    --topNavbarHeigth: 56px;
+}
+.sidebar-nav{
+    width: var(--offcanvas-width) !important;
+    background-color: rgb(19, 19, 114);
+}
+.sidebar-link{
+    display: flex;
+    align-items: center;
+}
+.sidebar-link .right-icon{
+    display: inline-flex;
+}
+.sidebar-link[aria-expanded="true"] .right-icon{
+    transform: rotate(90deg);
+}
+
+@media (min-width: 992px) {
+    main{
+        margin-left: var(--offcanvas-width);
+    }
+    .sidebar-nav{
+        transform: none !important;
+        visibility: visible !important;
+        top: var(--topNavbarHeigth) !important;
+        height: calc(100% - var(--topNavbarHeigth));
+
+    }
+}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EmployeController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -23,14 +24,24 @@ Route::get('/', function () {
 
 // Route::get('/', [Controller::class, 'index']);
 
-// admin / employes
-Route::get('liste-des-employés', [EmployeController::class, 'employes'])->name('list-employes');
-Route::get('ajouté-un-employé', [EmployeController::class, 'ajout_employe'])->name('ajout-employe');
-Route::post('employe-store', [EmployeController::class, 'store'])->name('employe-store');
-Route::get('modifier-employé/{id}', [EmployeController::class, 'edit'])->name('edit-employe');
-Route::get('info-employé/{id}', [EmployeController::class, 'show'])->name('show-employe');
-Route::put('update-employe/{id}', [EmployeController::class, 'update'])->name('update-employe');
-Route::delete('delete-employe/{id}', [EmployeController::class, 'destroy'])->name('destroy-employe');
+// admin
+Route::middleware(['auth', 'isAdmin'])->group( function(){
+    Route::prefix('cp-admin')->group( function(){
+        Route::get('', [AdminController::class, 'index'])->name('cp-admin');
+        // employes
+        Route::get('liste-des-employés', [EmployeController::class, 'employes'])->name('list-employes');
+        Route::get('ajouté-un-employé', [EmployeController::class, 'ajout_employe'])->name('ajout-employe');
+        Route::post('employe-store', [EmployeController::class, 'store'])->name('employe-store');
+        Route::get('modifier-employé/{id}', [EmployeController::class, 'edit'])->name('edit-employe');
+        Route::get('info-employé/{id}', [EmployeController::class, 'show'])->name('show-employe');
+        Route::put('update-employe/{id}', [EmployeController::class, 'update'])->name('update-employe');
+        Route::delete('delete-employe/{id}', [EmployeController::class, 'destroy'])->name('destroy-employe');
+    });
+
+});
+
+
+
 
 Auth::routes();
 
