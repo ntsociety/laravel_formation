@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('assets/admin/bootstrap-5.2.3-dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="stylesheet" href="{{ asset('assets/admin/style.css') }}">
     <title>Dashboard</title>
 </head>
@@ -24,5 +28,7 @@
 
 
     <script src="{{ asset('assets/admin/bootstrap-5.2.3-dist/js/bootstrap.bundle.js') }}"> </script>
+    <script src="{{ asset('assets/admin/jquery.min.js') }}"> </script>
+    <script src="{{ asset('assets/admin/app.js') }}"> </script>
 </body>
 </html>

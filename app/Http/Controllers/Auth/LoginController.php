@@ -26,7 +26,17 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    public function authenticated()
+    {
+        if(auth()->check() && auth()->user()->role=="admin")
+        {
+            return redirect()->route('cp-admin')->with('message', 'Bienvenue sur votre tableau de bord');
+        }
+        else{
+            return redirect('/');
+        }
+    }
 
     /**
      * Create a new controller instance.

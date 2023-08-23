@@ -25,11 +25,11 @@
             <div class="collapse" id="categorie">
               <ul class="navbar-nav ps-3">
                 <li>
-                  <a class="nav-link" href="categorie-liste.html">
+                  <a class="nav-link" href="{{ route('category.index') }}">
                     <span><i class="bi bi-eye"></i></span> Voir Catégories</a>
                 </li>
                 <li>
-                  <a class="nav-link" href="ajout-categorie.html">
+                  <a class="nav-link" href="{{ route('category.create') }}">
                     <span><i class="bi bi-plus-circle-fill"></i></span> Ajouter Catégories</a>
                 </li>
               </ul>
@@ -45,11 +45,11 @@
             <div class="collapse" id="produit">
               <ul class="navbar-nav ps-3">
                 <li>
-                  <a class="nav-link" href="produit-liste.html">
+                  <a class="nav-link" href="{{ route('produit.index') }}">
                     <span><i class="bi bi-eye"></i></span> Voir produit</a>
                 </li>
                 <li>
-                  <a class="nav-link" href="ajout-produit.html">
+                  <a class="nav-link" href="{{ route('produit.create') }}">
                     <span><i class="bi bi-plus-circle-fill"></i></span> Ajouter produit</a>
                 </li>
               </ul>

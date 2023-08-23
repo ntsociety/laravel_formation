@@ -8,9 +8,9 @@
     }
 </style>
 <div class="container">
-    <h4>Liste de nos produits
+    <h4> {{ $produit->count() }} Resultat trouvé pour {{ $search_text }}
         <form action="{{ route('search') }}" class="d-flex float-end" role="search" method="GET">
-            <input class="form-control me-2" type="search" name="search" placeholder="Rechercher produit" aria-label="Search">
+            <input class="form-control me-2" type="search" name='search' placeholder="Rechercher produit" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Rechercher</button>
         </form>
     </h4>

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryControlleur;
 use App\Http\Controllers\Admin\EmployeController;
+use App\Http\Controllers\Admin\ProduitControlleur;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,12 +19,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
-// Route::get('/', [Controller::class, 'index']);
+Route::get('/', [Controller::class, 'index']);
+Route::get('search', [Controller::class, 'search'])->name('search');
 
 // admin
 Route::middleware(['auth', 'isAdmin'])->group( function(){
@@ -36,6 +39,10 @@ Route::middleware(['auth', 'isAdmin'])->group( function(){
         Route::get('info-employé/{id}', [EmployeController::class, 'show'])->name('show-employe');
         Route::put('update-employe/{id}', [EmployeController::class, 'update'])->name('update-employe');
         Route::delete('delete-employe/{id}', [EmployeController::class, 'destroy'])->name('destroy-employe');
+        // category
+        Route::resource('category', CategoryControlleur::class);
+        // produit
+        Route::resource('produit', ProduitControlleur::class);
     });
 
 });
